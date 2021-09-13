@@ -7,12 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
 User.destroy_all
-Review.destroy_all
+# Review.destroy_all
 Brand.destroy_all
 
-User.create(name: 'William Badger', email: 'badbadge@gmail.com', password_digest: '', is_seller: true)
-
-Product.create(name: 'Product', price: 1, image_url: '', likes: 0, brand_id: 1)
+User.create(name: 'William Badger', email: 'badbadge@gmail.com', password_digest: '', is_seller: true);
 
 
 nike = Brand.create(name: 'Nike')
@@ -23,3 +21,11 @@ vans = Brand.create(name: 'Vans')
 converse = Brand.create(name: 'Converse')
 reebok = Brand.create(name: 'Reebok')
 keds = Brand.create(name: 'Keds')
+
+50.times do
+    Product.create(name: Faker::Company.name, price: rand(50..500), image_url: '', likes: rand(0..50), brand_id: Brand.all.sample.id);
+end
+
+5.times do
+    Review.create(comment: Faker::)
+end
