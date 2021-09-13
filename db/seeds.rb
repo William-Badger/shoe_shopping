@@ -9,3 +9,17 @@ Product.destroy_all
 User.destroy_all
 Review.destroy_all
 Brand.destroy_all
+
+User.create(name: 'William Badger', email: 'badbadge@gmail.com', password_digest: '', is_seller: true)
+
+Product.create(name: 'Product', price: 1, image_url: '', likes: 0, brand_id: 1)
+
+
+nike = Brand.create(name: 'Nike')
+adidas = Brand.create(name: 'Adidas')
+new_balance = Brand.create(name: 'New Balance')
+sketchers = Brand.create(name: 'Sketchers')
+vans = Brand.create(name: 'Vans')
+converse = Brand.create(name: 'Converse')
+reebok = Brand.create(name: 'Reebok')
+keds = Brand.create(name: 'Keds')
