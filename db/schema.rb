@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_09_13_150118) do
     t.integer "price"
     t.string "image_url"
     t.integer "likes"
-    t.boolean "in_stock"
     t.integer "quantity"
     t.integer "brand_id"
     t.datetime "created_at", precision: 6, null: false

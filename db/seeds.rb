@@ -20,7 +20,7 @@ reebok = Brand.create(name: 'Reebok')
 keds = Brand.create(name: 'Keds')
 
 50.times do
-    Product.create(name: Faker::Company.name, price: rand(50..500), image_url: '', likes: rand(0..50), brand_id: Brand.all.sample.id);
+    Product.create(name: Faker::Company.name, price: rand(50..500), image_url: '', likes: rand(0..50), quantity: rand(0..5000), brand_id: Brand.all.sample.id);
 end
 
 5.times do

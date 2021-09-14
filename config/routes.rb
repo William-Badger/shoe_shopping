@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  resource :users, only: [:create, :destroy]
-  resource :products
-  resource :reviews
-  resource :brands, only: [:index]
+  resources :users, only: [:create, :destroy]
+  resources :products
+  resources :reviews
+  resources :brands, only: [:index]
+
 
   post '/login', to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
