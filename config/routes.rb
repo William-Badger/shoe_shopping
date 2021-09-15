@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :destroy]
   resources :products
   resources :reviews
-  resources :brands, only: [:index]
+  resources :brands, only: [:index, :show]
 
 
   post '/login', to: "sessions#create"

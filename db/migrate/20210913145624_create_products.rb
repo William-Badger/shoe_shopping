@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :image_url
       t.float :likes
       t.integer :quantity
-      t.integer :brand_id
+      t.belongs_to :brand
 
       t.timestamps
     end

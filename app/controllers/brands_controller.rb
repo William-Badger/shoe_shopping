@@ -5,4 +5,9 @@ class BrandsController < ApplicationController
         render json: brands
     end
 
+    def show
+        brand = Brand.find_by(id: params[:id])
+        render json: brand
+    end
+
 end

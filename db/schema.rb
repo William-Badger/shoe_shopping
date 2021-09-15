@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_150118) do
     t.integer "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
   create_table "reviews", force: :cascade do |t|
