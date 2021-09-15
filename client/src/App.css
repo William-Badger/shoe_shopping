@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+#shoelist {
+  display: inline-block;
+}
+
+#shoebox {
+  width: 200px;
+  border: solid black 5px;
+  margin: 5px;
+}
+
+#shoebox img {
+  width: 200px;
+}

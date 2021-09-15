@@ -1,10 +1,14 @@
 import React from 'react';
+import { useHistory } from "react-router-dom"
 
 
 const Login = () => {
 
+    let history = useHistory();
+    console.log(history);
+
     function handleClick() {
-        
+        history.push('/home')
     }
 
 
@@ -28,9 +32,10 @@ const Login = () => {
                 </div>
             </form>
             <div>
-                <form onClick= {handleClick()}>
-                    <input type="checkbox" name="seller?" value="Yes" />Become a Seller?
-                </form>
+                <button onClick= {handleClick()}>
+                    <input 
+                    type="checkbox" name="seller?" value="Yes" />Become a Seller?
+                </button>
             </div>
         </div>
     );

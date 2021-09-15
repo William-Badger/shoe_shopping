@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.string :name
       t.integer :price
       t.string :image_url
-      t.integer :likes
+      t.float :likes
       t.integer :quantity
       t.integer :brand_id
 
