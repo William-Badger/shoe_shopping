@@ -50,3 +50,11 @@
 #shoebox img {
   width: 200px;
 }
+
+.individual{
+  float:left;
+  width: 30%;
+  margin-bottom: 100px;
+  margin-right: 200px;
+  
+}

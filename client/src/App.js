@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Route, BrowserRouter } from "react-router-dom";
 import Login from "./Login";
+import NewProduct from './NewProduct';
 import MainContainer from "./MainContainer";
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
         </Route>
         <Route exact path = "/home">
           <MainContainer />
+        </Route>
+        <Route exact path = "/new-shoe">
+          <NewProduct />
         </Route>
       </BrowserRouter>
     </div>

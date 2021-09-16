@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+    before_action :authorize, only: [:index, :show]
 
     def index
         product = Product.all
@@ -15,7 +16,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-        product = Product.create!(products_params)
+        product = Product.create(products_params)
         if product.valid?
             session[:user_id] = product.id
             render json: product, status: :created

@@ -7,7 +7,7 @@ const ShoeList = ({shoes}) => {
         <div> 
         <ul  id="shoelist">
         {shoes.map(shoe => (
-           <ShoeBox 
+            <ShoeBox 
                 key = {shoe.id}
                 shoe = {shoe}
                 />

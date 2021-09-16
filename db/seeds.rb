@@ -7,22 +7,21 @@ User.destroy_all
 Review.destroy_all
 Brand.destroy_all
 
-User.create(
-    name: 'William Badger', 
-    email: 'badbadge@gmail.com', 
-    password_digest: 'password', 
-    is_seller: true);
+User.create(name: 'William Badger', email: 'badbadge@gmail.com', password_digest: 'password', is_seller: true);
+User.create(name: 'James Berry', email: 'mallman@gmail.com', password_digest: 'password', is_seller: true);
+User.create(name: 'Tenzing Shuprina ', email: 'TSA@gmail.com', password_digest: 'password', is_seller: true);
+User.create(name: 'Roger Doger', email: 'RogerD@gmail.com', password_digest: 'password', is_seller: true);
+User.create(name: 'Ghost', email: 'ghost@hotmail.com', password_digest: 'password', is_seller: true);
 
-brands = [
-Brand.create(name: 'Nike'),
-Brand.create(name: 'Adidas'),
-Brand.create(name: 'New Balance'),
-Brand.create(name: 'Sketchers'),
-Brand.create(name: 'Vans'),
-Brand.create(name: 'Converse'),
-Brand.create(name: 'Reebok'),
-Brand.create(name: 'Keds')
-]
+
+nike = Brand.create(name: 'Nike'),
+adidas = Brand.create(name: 'Adidas'),
+newBalance = Brand.create(name: 'New Balance'),
+sketchers = Brand.create(name: 'Sketchers'),
+vans = Brand.create(name: 'Vans'),
+converse = Brand.create(name: 'Converse'),
+reebok = Brand.create(name: 'Reebok'),
+keds = Brand.create(name: 'Keds')
 
 images = [
     'https://cdn.shopify.com/s/files/1/0107/9820/2938/products/brilliantmobile_800x800_crop_center.png?v=1628181638',
@@ -42,14 +41,17 @@ images = [
     'https://tenniscompanion.org/wp-content/uploads/2020/04/ten-best-tennis-shoes-2020-mens-and-womens-guide.png'
 ]
 
-100.times do
+5.times do
     Product.create(
         name: Faker::Company.name, 
         price: rand(50..500), 
         image_url: images.sample,
         likes: rand(0.0..5.0),
         quantity: rand(0..1000),
-        brand_id: brands.sample.id);
+        brand_id: Brand.all.sample.id,
+        user_id: User.first.id
+    );
+
 end
 
 200.times do
