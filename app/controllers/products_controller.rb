@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
-    before_action :authorize, only: [:index, :show]
+    # before_action :authorize, only: [:index, :show]
+    skip_before_action :verify_authenticity_token, only: [:create]
 
     def index
-        product = Product.all
-        render json: product
+        products = Product.all
+        render json: products
     end
 
     def show
@@ -17,12 +18,12 @@ class ProductsController < ApplicationController
 
     def create
         product = Product.create(products_params)
-        if product.valid?
+        # if product.valid?
             session[:user_id] = product.id
             render json: product, status: :created
-        else
-            render json: { error: product.errors.full_messages }, status: :unprocessable_entity
-        end
+        # else
+        #     render json: { error: product.errors.full_messages }, status: :unprocessable_entity
+        # end
     end
 
     def destroy
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
     end
 
     def update 
-        prodcut = Product.find_by(id: params[:id])
+        product = Product.find_by(id: params[:id])
         if product
             product.update(product_params)
             render json: product, status: :accepted
@@ -47,6 +48,6 @@ class ProductsController < ApplicationController
     private 
     
     def products_params
-        params.permit(:name, :price, :image_url, :likes, :brand_id)
+        params.permit(:name, :price, :image_url, :likes, :quantity, :user_id)
     end
 end

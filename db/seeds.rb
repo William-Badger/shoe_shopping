@@ -5,7 +5,7 @@
 Product.destroy_all
 User.destroy_all
 Review.destroy_all
-Brand.destroy_all
+# Brand.destroy_all
 
 User.create(name: 'William Badger', email: 'badbadge@gmail.com', password_digest: 'password', is_seller: true);
 User.create(name: 'James Berry', email: 'mallman@gmail.com', password_digest: 'password', is_seller: true);
@@ -14,14 +14,14 @@ User.create(name: 'Roger Doger', email: 'RogerD@gmail.com', password_digest: 'pa
 User.create(name: 'Ghost', email: 'ghost@hotmail.com', password_digest: 'password', is_seller: true);
 
 
-nike = Brand.create(name: 'Nike'),
-adidas = Brand.create(name: 'Adidas'),
-newBalance = Brand.create(name: 'New Balance'),
-sketchers = Brand.create(name: 'Sketchers'),
-vans = Brand.create(name: 'Vans'),
-converse = Brand.create(name: 'Converse'),
-reebok = Brand.create(name: 'Reebok'),
-keds = Brand.create(name: 'Keds')
+# nike = Brand.create(name: 'Nike'),
+# adidas = Brand.create(name: 'Adidas'),
+# newBalance = Brand.create(name: 'New Balance'),
+# sketchers = Brand.create(name: 'Sketchers'),
+# vans = Brand.create(name: 'Vans'),
+# converse = Brand.create(name: 'Converse'),
+# reebok = Brand.create(name: 'Reebok'),
+# keds = Brand.create(name: 'Keds')
 
 images = [
     'https://cdn.shopify.com/s/files/1/0107/9820/2938/products/brilliantmobile_800x800_crop_center.png?v=1628181638',
@@ -48,7 +48,7 @@ images = [
         image_url: images.sample,
         likes: rand(0.0..5.0),
         quantity: rand(0..1000),
-        brand_id: Brand.all.sample.id,
+        # brand_id: Brand.all.sample.id,
         user_id: User.first.id
     );
 

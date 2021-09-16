@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from "react-router-dom"
 
 
-const Login = () => {
+const Login = ({setUser}) => {
 
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -15,43 +15,51 @@ const Login = () => {
     let history = useHistory();
 
     function signUp() {
-        fetch('http://localhost:3000/users', {
-        method: "POST",
-        header: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+
+        const signup = {
             name: newName,
             email: newEmail,
-            password: newPassword
-        })
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
+            password: newPassword,
+            is_seller: true
+        }
 
-        history.push('/home')
+        fetch('http://localhost:3000/users', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(signup)
+    })
+    .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        }
+      });
+        
     }
     
     function logIn() {
-        fetch('http://localhost:3000/sessions',{
-        method: "GET",
-        header: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+
+        const logup = {
             name: name,
             email: email,
             password: password
-        })
-    })
-        .then(res => res.json())
-        .then(data => console.log(data))
+        }
 
+        fetch('http://localhost:3000/login', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(logup)
+        })
+        .then((r) => {
+            if (r.ok) {
+              r.json().then((user) => setUser(user));
+            }
+          })
         history.push('/home')
     }
-
-
-
 
     return (
         <div>
@@ -65,7 +73,7 @@ const Login = () => {
                     value = {name}
                     onChange ={(e) => setName(e.target.value)}
                     type="text"
-                    placeholder="Userame..."
+                    placeholder="Username..."
                     required
                     />
                 </label>
@@ -133,12 +141,6 @@ const Login = () => {
                     <button type="submit">Signup</button>
                 </div>
             </form>
-            <div>
-                <button type="submit">
-                    <input 
-                    type="checkbox" name="seller?" value="Yes" />Become a Seller?
-                </button>
-            </div>
             </div>
         </div>
     );

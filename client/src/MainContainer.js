@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-const MainContainer = () => {
+const MainContainer = ({setUser}) => {
 
     let history = useHistory()
 
@@ -26,11 +26,14 @@ const MainContainer = () => {
     }
     
     function handleClick() {
-        fetch('https://localhost:3000/sessions', {
+        fetch('http://localhost:3000/logout', {
             method: 'DELETE' })
-        .then(res => res.json())
-        .then(res => console.log(res))
-    }
+        .then(r => {
+            if (r.ok) {
+              setUser(null);
+            }
+          });
+        }
 
     function sellShoe() {
         if ("user.is_seller" === "user.is_seller") {

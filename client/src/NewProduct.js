@@ -6,7 +6,7 @@ const NewProduct = () => {
     const [newName, setNewName] = useState('');
     const [newPrice, setNewPrice] = useState('');
     const [newImage, setNewImage] = useState('');
-    const [newBrand, setNewBrand] = useState('');
+    // const [newBrand, setNewBrand] = useState('');
     const [newQuantity, setNewQuantity] = useState('');
     // const [brands, setBrands] = useState([]);
 
@@ -19,30 +19,30 @@ const NewProduct = () => {
 
     function handleSubmit(e) {
         e.preventDefault();
+        const newProduct = {
+            name: newName,
+            price: parseInt(newPrice),
+            image_url: newImage,
+            likes: 5.0,
+            quantity: parseInt(newQuantity),
+            // brand_id: 25,
+            user_id: 1
+        }
+        console.log(newProduct)
 
         fetch('http://localhost:3000/products', {
-            method: "POST",
-            header: {
-                'Content-Type': 'application/json'
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                name: newName,
-                price: newPrice,
-                image_url: newImage,
-                likes: 5.0,
-                quantity: newQuantity,
-                brand_id: 1,
-                user_id: 1
-            })
+            body: JSON.stringify(newProduct)
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
     }
 
     return (
         <div>
             <h2>Add a shoe: </h2>
-            <form onSubmit = {handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <label>Name of shoe</label>
                 <input 
                 type="text" 
@@ -55,7 +55,7 @@ const NewProduct = () => {
 
                 <label>Price</label>
                 <input 
-                type="text" 
+                type="number" 
                 placeholder="Price" 
                 value = {newPrice}
                 onChange = {(e) => setNewPrice(e.target.value)}
@@ -65,7 +65,7 @@ const NewProduct = () => {
 
                 <label>Quantity</label>
                 <input 
-                type="text" 
+                type="number" 
                 placeholder="Quantity" 
                 value = {newQuantity}
                 onChange = {(e) => setNewQuantity(e.target.value)}
@@ -83,7 +83,7 @@ const NewProduct = () => {
                 ></input>
                 <br/>
 
-                <label>Brand</label>
+                {/* <label>Brand</label>
                 <select name='brand'>
                         <option value='Nike'>Nike</option>
                         <option value='Adidas'>Adidas</option>
@@ -93,7 +93,7 @@ const NewProduct = () => {
                         <option value='Converse'>Converse</option>
                         <option value='Reebok'>Reebok</option>
                         <option value='Keds'>Keds</option>
-                    </select>
+                    </select> */}
 
                 <button type = "submit" >Submit</button>
                 <hr/>
