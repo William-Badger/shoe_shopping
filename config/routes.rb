@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   post '/signup', to: 'users#create'
 
+  delete '/users/:id', to: 'users#destroy'
+
   get '/me', to: 'users#show'
   get '/test', to: 'users#testing'
 end

@@ -5,10 +5,11 @@ import { Route, BrowserRouter } from "react-router-dom";
 import Login from "./Login";
 import NewProduct from './NewProduct';
 import MainContainer from "./MainContainer";
+import ChangeAccount from './ChangeAccount';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -23,13 +24,16 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Route exact path = "/">
-          <Login setUser={setUser}/>
+          <Login setUser={setUser} user={user}/>
         </Route>
         <Route exact path = "/home">
-          <MainContainer setUser={setUser}/>
+          <MainContainer setUser={setUser} user={user}/>
         </Route>
         <Route exact path = "/new-shoe">
-          <NewProduct />
+          <NewProduct user={user}/>
+        </Route>
+        <Route exact path = "/portfolio">
+          <ChangeAccount user={user} setUser={setUser}/>
         </Route>
       </BrowserRouter>
     </div>

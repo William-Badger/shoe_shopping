@@ -4,14 +4,29 @@ import Filter from './Filter';
 import ShoeList from './ShoeList'
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import NewProduct from './NewProduct';
 
 
 
-const MainContainer = ({setUser}) => {
+const MainContainer = ({setUser, user}) => {
+
+    // const[buyShoes, setBuyShoes] = useState([])
 
     let history = useHistory()
 
     const [shoes, setShoes] = useState([])
+
+    // function handleBuyShoes(purchasedShoe) {
+    //     const boughtShoes = shoes.map((shoe) => {
+    //         if(shoe.id === purchasedShoe.id) {
+    //             return purchasedShoe;
+    //         }
+    //         else {
+    //             return shoe;
+    //         }
+    //     })
+    //     setShoes(boughtShoes)
+    // }
 
     useEffect(() => {
         fetch('/products')
@@ -30,6 +45,7 @@ const MainContainer = ({setUser}) => {
         .then(r => {
             if (r.ok) {
               setUser(null);
+              history.push('/')
             }
           });
         }
@@ -42,18 +58,18 @@ const MainContainer = ({setUser}) => {
         }
     }
 
+    function changeEmail() {
+        history.push('/portfolio')
+    }
+
     return (
         <div>
-            <button onClick={() => {
-                fetch('/users')
-                .then(r => r.json())
-                .then(console.log)
-            }} >Test Button</button>
-            <h1>Welcome to Foot Rocker</h1>
+            <h1>Welcome to Foot Rocker {user.name}</h1>
             <div>
                 <Filter shoes={shoes}/>
                 <button onClick = {handleClick}>Logout</button>
                 <button onClick = {sellShoe}>Sell Shoe</button>
+                <button onClick = {changeEmail}>Change Account Info</button>
                 <ShoeList shoes = {shoes}/>
                 <Seller />
             </div>

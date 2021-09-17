@@ -34,11 +34,11 @@ const Login = ({setUser}) => {
     })
     .then((r) => {
         if (r.ok) {
-          r.json().then((user) => setUser(user));
-          history.push('/home')
+        r.json().then((user) => setUser(user));
+        history.push('/home')
         }
-      });
-      
+    });
+
     }
     
     function logIn(e) {
@@ -47,7 +47,8 @@ const Login = ({setUser}) => {
         const logup = {
             name: name,
             email: email,
-            password: password
+            password: password,
+            is_seller: true
         }
 
         fetch('/login', {

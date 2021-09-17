@@ -10,6 +10,7 @@ const ShoeList = ({shoes}) => {
             <ShoeBox 
                 key = {shoe.id}
                 shoe = {shoe}
+                // handleBuyShoe = {handleBuyShoe}
                 />
         ))}
         </ul>

@@ -15,13 +15,14 @@ class UsersController < ApplicationController
             end
     end
 
-    def testing
-        byebug
+    def update
+        user = User.find(params[:id])
+        user.update(users_params)
+        render json: user
     end
 
     def create
         user = User.create(users_params)
-        byebug
         if user.valid?
             session[:user_id] = user.id
             render json: user, status: :created

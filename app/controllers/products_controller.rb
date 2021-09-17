@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     # before_action :authorize, only: [:index, :show]
-    # skip_before_action :verify_authenticity_token, only: [:create]
+    
 
     def index
         products = Product.all
@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
             render json: product
         else
             render json: {error: "Not Found"}, status: :not_found
-       end
+        end
     end
 
     def create

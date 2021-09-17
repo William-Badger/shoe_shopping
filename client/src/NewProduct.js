@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-const NewProduct = () => {
+const NewProduct = ({user}) => {
 
     const [newName, setNewName] = useState('');
     const [newPrice, setNewPrice] = useState('');
@@ -25,12 +25,11 @@ const NewProduct = () => {
             image_url: newImage,
             likes: 5.0,
             quantity: parseInt(newQuantity),
-            // brand_id: 25,
-            user_id: 1
+            user_id: user.id
         }
         console.log(newProduct)
 
-        fetch('http://localhost:3000/products', {
+        fetch('/products', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
