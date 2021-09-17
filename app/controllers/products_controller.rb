@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
     # before_action :authorize, only: [:index, :show]
-    skip_before_action :verify_authenticity_token, only: [:create]
+    # skip_before_action :verify_authenticity_token, only: [:create]
 
     def index
         products = Product.all
@@ -18,12 +18,12 @@ class ProductsController < ApplicationController
 
     def create
         product = Product.create(products_params)
-        # if product.valid?
+        if product.valid?
             session[:user_id] = product.id
             render json: product, status: :created
-        # else
-        #     render json: { error: product.errors.full_messages }, status: :unprocessable_entity
-        # end
+        else
+            render json: { error: product.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     def destroy

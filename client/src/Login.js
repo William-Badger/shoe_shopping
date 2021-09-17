@@ -5,16 +5,18 @@ import { useHistory } from "react-router-dom"
 
 const Login = ({setUser}) => {
 
-    const [newEmail, setNewEmail] = useState('');
-    const [newPassword, setNewPassword] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+
+    const [newEmail, setNewEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
     const [newName, setNewName] = useState('');
 
     let history = useHistory();
 
-    function signUp() {
+    function signUp(e) {
+        e.preventDefault();
 
         const signup = {
             name: newName,
@@ -23,7 +25,7 @@ const Login = ({setUser}) => {
             is_seller: true
         }
 
-        fetch('http://localhost:3000/users', {
+        fetch('/users', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -38,7 +40,8 @@ const Login = ({setUser}) => {
         
     }
     
-    function logIn() {
+    function logIn(e) {
+        e.preventDefault();
 
         const logup = {
             name: name,
@@ -46,7 +49,7 @@ const Login = ({setUser}) => {
             password: password
         }
 
-        fetch('http://localhost:3000/login', {
+        fetch('/login', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

@@ -1,36 +1,41 @@
 class UsersController < ApplicationController
-    # before_action :authorize, only: [:index, :show]
-    skip_before_action :verify_authenticity_token, only: [:create]
+    before_action :authorize, only: [ :show]
+    # skip_before_action :verify_authenticity_token, only: [:create]
 
-    def index
-        @users = User.all
-            if @users
-                render json: {
-                    users: @users
-                }
-            else
-                render json: {
-                    status: 500,
-                    errors: ['no users found']
-                }
-            end
+    # def index
+    #     @users = User.all
+    #         if @users
+    #             render json: {
+    #                 users: @users
+    #             }
+    #         else
+    #             render json: {
+    #                 status: 500,
+    #                 errors: ['no users found']
+    #             }
+    #         end
+    # end
+
+    def testing
+        byebug
     end
 
     def create
-        @user = User.create(users_params)
-        if @user.valid?
-            session[:user_id] = @user.id
-            render json: @user, status: :created
+        user = User.create(users_params)
+        byebug
+        if user.valid?
+            session[:user_id] = user.id
+            render json: user, status: :created
         else
-            render json: { error: @user.errors.full_messages }, status: :unprocessable_entity
+            render json: { error: user.errors.full_messages }, status: :unprocessable_entity
         end
     end
 
     def show
-        @user = User.find_by(id: session[:user_id])
+        user = User.find_by(id: session[:user_id])
         if user
         render json: {
-            user: @user
+            user: user
         }
         else
             render json: {
@@ -53,10 +58,10 @@ class UsersController < ApplicationController
     private 
 
     def users_params
-        params.permit(:name, :email, :password, :is_seller)
+        params.permit(:name, :email, :password)
     end
 
-    # def authorize
-    #     return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
-    # end
+    def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+    end
 end

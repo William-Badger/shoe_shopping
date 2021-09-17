@@ -21,7 +21,6 @@ const MainContainer = ({setUser}) => {
         
     function sortItOut(data) {
         let stuff = data.sort((a, b) => b.likes - a.likes)
-        console.log(stuff)
         setShoes(stuff);
     }
     
