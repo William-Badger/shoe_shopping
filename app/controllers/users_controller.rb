@@ -1,20 +1,19 @@
 class UsersController < ApplicationController
-    before_action :authorize, only: [ :show]
-    # skip_before_action :verify_authenticity_token, only: [:create]
+    skip_before_action :authorize, only: [:create]
 
-    # def index
-    #     @users = User.all
-    #         if @users
-    #             render json: {
-    #                 users: @users
-    #             }
-    #         else
-    #             render json: {
-    #                 status: 500,
-    #                 errors: ['no users found']
-    #             }
-    #         end
-    # end
+    def index
+        @users = User.all
+            if @users
+                render json: {
+                    users: @users
+                }
+            else
+                render json: {
+                    status: 500,
+                    errors: ['no users found']
+                }
+            end
+    end
 
     def testing
         byebug

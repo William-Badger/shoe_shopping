@@ -1,15 +1,20 @@
 class ApplicationController < ActionController::Base
     include ActionController::Cookies
+    skip_before_action :verify_authenticity_token
 
-  #   before_action :authorize
+    def currentUser
+        User.find_by(id: session[:user_id])
+    end
+
+    before_action :authorize
   #   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-  # private
+  private
 
-  # def authorize
-  #   render json: { errors: ["Not authorized"] }, status:
-  #   :unauthorized unless session.include? :user_id
-  # end
+  def authorize
+    render json: { errors: ["Not authorized"] }, status:
+    :unauthorized unless session.include? :user_id
+  end
 
   # def findUser
   #   @current_user = User.find_by(id: session[:user_id])

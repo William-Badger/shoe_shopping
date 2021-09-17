@@ -14,7 +14,7 @@ const MainContainer = ({setUser}) => {
     const [shoes, setShoes] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/products')
+        fetch('/products')
         .then(res => res.json())
         .then(data => sortItOut(data))
         },[])
@@ -25,7 +25,7 @@ const MainContainer = ({setUser}) => {
     }
     
     function handleClick() {
-        fetch('http://localhost:3000/logout', {
+        fetch('/logout', {
             method: 'DELETE' })
         .then(r => {
             if (r.ok) {
@@ -35,7 +35,7 @@ const MainContainer = ({setUser}) => {
         }
 
     function sellShoe() {
-        if ("user.is_seller" === "user.is_seller") {
+        if (true) {
         history.push('/new-shoe')
         } else {
             console.log("You are not a seller")
@@ -44,6 +44,11 @@ const MainContainer = ({setUser}) => {
 
     return (
         <div>
+            <button onClick={() => {
+                fetch('/users')
+                .then(r => r.json())
+                .then(console.log)
+            }} >Test Button</button>
             <h1>Welcome to Foot Rocker</h1>
             <div>
                 <Filter shoes={shoes}/>

@@ -35,9 +35,10 @@ const Login = ({setUser}) => {
     .then((r) => {
         if (r.ok) {
           r.json().then((user) => setUser(user));
+          history.push('/home')
         }
       });
-        
+      
     }
     
     function logIn(e) {
@@ -59,9 +60,9 @@ const Login = ({setUser}) => {
         .then((r) => {
             if (r.ok) {
               r.json().then((user) => setUser(user));
+              history.push('/home')
             }
           })
-        history.push('/home')
     }
 
     return (
