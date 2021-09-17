@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const NewProduct = ({user}) => {
 
@@ -16,6 +17,7 @@ const NewProduct = ({user}) => {
     //     .then(data => console.log(data))
     // }, []);
 
+    let history = useHistory();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -36,6 +38,7 @@ const NewProduct = ({user}) => {
             },
             body: JSON.stringify(newProduct)
         })
+        history.push('/home')
     }
 
     return (

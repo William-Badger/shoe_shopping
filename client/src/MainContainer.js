@@ -59,19 +59,18 @@ const MainContainer = ({setUser, user}) => {
     }
 
     function changeEmail() {
-        history.push('portfolio')
+        history.push('/portfolio')
     }
 
     return (
         <div>
-            <h1>Welcome to Foot Rocker {user.name}</h1>
+            <h1>Welcome to Foot Rocker {user.name}!</h1>
             <div>
                 <Filter shoes={shoes}/>
                 <button onClick = {handleClick}>Logout</button>
                 <button onClick = {sellShoe}>Sell Shoe</button>
                 <button onClick = {changeEmail}>Change Account Info</button>
                 <ShoeList shoes = {shoes}/>
-                <Seller />
             </div>
         </div>
     );

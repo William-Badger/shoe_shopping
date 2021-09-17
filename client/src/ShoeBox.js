@@ -25,7 +25,7 @@ const ShoeBox = ({shoe}) => {
 
     return (
         <div className= 'individual' id="shoebox">
-            <img src={shoe.image_url} alt=''/>
+            <img className= 'image' src={shoe.image_url} alt=''/>
             <p>Name: {shoe.name}</p>
             <p>Quantity: {shoe.quantity}</p>
             <p>Price: {shoe.price}</p>

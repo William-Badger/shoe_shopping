@@ -56,5 +56,9 @@
   width: 30%;
   margin-bottom: 100px;
   margin-right: 200px;
-  
+  height: 390px;
+}
+
+.image{
+  height: 190px;
 }
