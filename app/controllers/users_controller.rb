@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       end
 
     def destroy
-        user = User.find_by(user_id: params[:user_id])
+        user = User.find_by(id: params[:id])
         if user
             user.destroy
             head :no_content

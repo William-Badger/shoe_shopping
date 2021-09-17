@@ -44,10 +44,10 @@ const MainContainer = ({setUser, user}) => {
             method: 'DELETE' })
         .then(r => {
             if (r.ok) {
-              setUser(null);
-              history.push('/')
+            setUser(null);
             }
-          });
+        });
+        history.push('/')
         }
 
     function sellShoe() {
@@ -59,7 +59,7 @@ const MainContainer = ({setUser, user}) => {
     }
 
     function changeEmail() {
-        history.push('/portfolio')
+        history.push('portfolio')
     }
 
     return (
