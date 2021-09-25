@@ -25,7 +25,7 @@ const Login = ({setUser}) => {
             is_seller: true
         }
 
-        fetch('/users', {
+        fetch('/signup', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
